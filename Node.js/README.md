@@ -324,3 +324,30 @@ Cookie是存储在用户浏览器中的一段不超过4KB的字符串。由一�
 > Session的工作原理
 
 ![](https://gitee.com/merlinalex/pic-go/raw/master/20220306220555.png)
+
+> 局限性
+
+Session认证机制需要配合Cookie才能实现。而由于Cookie默认不支持跨域访问，所以涉及到前端跨域请求后端接口的时候，需要很多额外的配置。
+
+### JWT
+
+JSON Web Token 是目前最流行的跨域认证解决方案。
+
+> 工作原理
+
+![](https://gitee.com/merlinalex/pic-go/raw/master/20220307144702.png)
+
+> 组成部分
+
+- Header头部
+- Payload有效荷载
+- Signature签名
+
+> 使用方式
+
+客户端收到服务器返回的JWT后，通常会将它存储在localStorage或sessionStorage中。
+
+此后客户端每次与服务器通信，都要带上这个JWT字符串，从而进行身份认证。
+
+推荐的做法是把JWT放在HTTP请求头的Authorization字段中。
+
