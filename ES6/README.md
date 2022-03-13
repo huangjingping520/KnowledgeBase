@@ -132,3 +132,36 @@ getAllFile()
 
 1. 如果function中使用了await，则function必须被async修饰
 2. 在async方法中，第一个await之前的代码会同步执行，await之后的代码会异步执行。
+
+## Eventloop
+
+> JavaScript是一门单线程的编程语言。
+> > 如果前一个任务非常耗时，则后续任务就不得不一直等待，从而造成程序假死。
+
+### 同步任务（synchronous）
+
+非耗时任务，指的是主线程上排队执行的那些任务。
+
+只有前一个任务执行完毕，才能执行后一个任务。
+
+### 异步任务（asynchronous）
+
+耗时任务，异步任务由JavaScript委托给宿主环境进行执行。
+
+当异步任务执行完成后，会通知JavaScript主线程执行异步任务的回调函数。
+
+**宏任务：**
+
+- 异步Ajax请求
+- setTimeout、SetInterval
+- 文件操作
+- 其它宏任务
+
+**微任务：**
+
+- Promise.then、.catch和.finally
+- process.nextTick
+- 其它微任务
+
+每一个宏任务执行完之后都会检查是否存在待执行的微任务，如果有则执行完所有的微任务之后，再继续执行下一个宏任务。
+
