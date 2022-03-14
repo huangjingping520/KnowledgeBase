@@ -342,3 +342,134 @@ watch: {
 
 1. 实现了代码的复用。
 2. 只要计算属性中依赖的数据源变化了，则计算属性会自动重新要求值。
+
+## axios
+
+> axios是一个专注于网络请求的库
+
+**基本语法：**
+
+```js
+axios({
+  method: '请求类型',
+  url: '请求地址',
+  params: {URL中的查询参数},
+  data: {请求体参数}
+}).then((result) => {
+  //回调函数
+  //result 为请求成功后的结果是一个Promise对象
+})
+```
+
+## 单页面应用程序
+
+> Single Page Application(SPA), 所有的功能与交互都在唯一的页面完成。
+
+### Vue项目的运行流程
+
+> 通过 main.js 将 App.vue 渲染到 index.html 的指定区域中。
+
+- App.vue 用来编写待渲染的模版结构
+- index.html 中需要预留一个 el 区域
+- main.js 把 App.vue 渲染到了 index.html 所预留的区域中
+
+## 组件
+
+### 组件化开发
+
+> 根据**封装**的思想，把页面上可重用的UI结构封装为组件，从而方便项目的开发和维护。
+
+### 组成
+
+- template： 模版结构
+- script： JavaScript 行为
+- style： 样式
+
+### 使用步骤
+
+1. 使用 `import` 导入需要的组件
+
+```js
+import Left from '@/components/Left.vue'
+```
+
+2. 使用 `components` 节点注册组件
+
+```js
+export default {
+  components: {
+    Left
+  }
+}
+```
+
+> 通过 components 注册的是私有子组件。
+
+3. 以标签形式使用刚注册的组件
+
+```html
+<Left></Left>
+```
+
+**注册全局组件**
+
+在 vue 项目的 main.js 入口文件中， 通过 `Vue.component()` 方法可以注册全局组件。
+
+### 组件的 `props`
+
+`props` 是组件的自定义属性，在封装组件的时候，合理的使用可以极大的提高组件的复用性。
+
+> props 是只读的
+
+`default` 默认值
+
+`type` 值类型
+
+`required` 必填值
+
+### 组件的样式冲突
+
+> 默认情况下， 写在 .vue 组件中的样式会全局生效，因此很容易会造成多个组件之间的样式冲突问题。
+
+可以通过 `scoped` 解决，只在该组件下生效。
+
+`/deep/` 样式穿透
+
+> 使用第三方组件库的时候，如果有修改其默认样式的需求，需要用到 `/deep/`
+
+### 组件的生命周期
+
+> 生命周期是指一个组件从创建 -> 运行 -> 销毁的整个过程，强调的是一个时间段。
+
+生命周期函数： 是由 vue 框架提供的内置函数，会伴随组件的生命周期，自动按次序执行。
+
+![](https://gitee.com/merlinalex/pic-go/raw/master/lifecycle.png)
+
+1. 组件创建阶段
+
+`beforeCreate`
+
+`created`
+
+> 该生命周期函数非常常用，经常在其中调用 methods 中的方法， 请求服务中的数据，并且把请求到的数据转存到 data 中，供 template 模版渲染到时候使用。
+
+`beforeMount`
+
+`mounted`
+
+> 对于 DOM 结构的操作最早在该阶段。
+
+2. 组件运行阶段
+
+`beforeUpdate`
+
+`updated`
+
+3. 组件销毁阶段
+
+`beforeDestroy`
+
+`destroyed`
+
+### 组件之间的数据共享
+
