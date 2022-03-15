@@ -473,3 +473,81 @@ export default {
 
 ### 组件之间的数据共享
 
+**父组件 -> 子组件**
+
+需要使用 **自定义属性**
+
+**子组件 -> 父组件**
+
+需要使用 **自定义事件**
+
+**兄弟之间的数据共享**
+
+使用 `EventBus`
+
+## ref引用
+
+> 每个 vue 组件实例上，都包含一个 $refs 对象，里面存储着对应的DOM元素或组件的饮用。默认情况下，组件的 $refs 指向一个空对象。
+
+`this.$nextTick(cb)` 方法会把 cb 回调推迟到下一个 DOM 更新周期之后执行。
+
+## 动态组件 
+
+`<component>` 组件，专门用来实现动态组件的渲染。
+
+使用 `keep-alive` 保持状态： 可以把内部的组件进行缓存，而不是销毁组件。
+
+`keep-alive` 对应的生命周期函数： 
+
+- 被缓存时：`deactivated`函数
+- 被激活时：`activated`函数
+
+```html
+<keep-alive>
+  <component></component>
+</keep-alive>
+```
+
+可以通过 `include` 指定被缓存的组件。
+
+可以通过 `exclude` 指定不被缓存的组件。
+
+但是不要同时使用 `include` 和 `exclude`
+
+## 插槽
+
+> 插槽（slot）是 vue 为组件的封装者提供的能力。允许开发者在封装组件时，把不确定、希望由用户指定的部分定义为插槽。
+
+```html
+<slot></slot>
+```
+
+每一个 slot 插槽都要有一个 name 属性， 若省略， 则有一个默认名称 default
+
+`v-slot` 可以指定放在哪个插槽中，但是只能放在 `<template>` 标签上，可以用 `#` 简写。
+
+```html
+<template v-slot:default>
+  <p></p>
+</template>
+```
+
+## 自定义指令
+
+### 私有自定义指令
+
+> 每个 vue 组件中， 可以在 directives 节点下声明私有自定义指令。
+
+```js
+directives: {
+  color: {
+    bind(el){
+      el.style.color = 'red'
+    }
+  }
+}
+```
+
+### 全局自定义指令
+
+通过 `Vue.directives()` 创建
