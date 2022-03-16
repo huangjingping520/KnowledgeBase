@@ -551,3 +551,138 @@ directives: {
 ### 全局自定义指令
 
 通过 `Vue.directives()` 创建
+
+## 路由
+
+> 路由就是对应关系
+
+**前端路由：** Hash 地址与组件之间的对应关系
+
+**前端路由的工作方式：** 
+
+1. 用户点击了页面上的路由链接
+2. URL地址栏中的 Hash 值发生了变化
+3. 前端路由监听到了 Hash 地址的变化
+4. 前端路由把当前 Hash 地址对应的组件渲染到浏览器中
+
+### `vue-router` 
+
+1. 安装
+
+```bash
+npm i vue-router -S
+```
+
+2. 创建路由模块
+
+在 src/ 目录下创建 router/index.js
+
+3. 导入并挂载路由模块
+
+`router/index.js`
+
+```js
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter()
+
+export default router
+```
+
+`main.js`
+
+```js
+import router from '@/router/index.js'
+
+// ................................
+
+new Vue ({
+  //...
+
+  router
+}).$mount('#app')
+```
+
+4. 声明路由链接和占位符
+
+```html
+
+<!-- 路由占位符 -->
+<router-view></router-view>
+```
+
+### 路由重定向
+
+> 用户在访问 A 的时候，强制用户调转到 C， 从而展示特定的组件页面。
+
+```js
+const router = new VueRouter({
+  routes: [
+    { path: '/', redirect: '/home' }
+  ]
+})
+```
+
+### 嵌套路由
+
+> 通过路由实现组件的嵌套展示。
+
+**通过 children 属性声明子路由规则**
+
+```js
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/about',
+      component: About,
+      children: [
+        { path: 'tab1', component: Tab1 },
+        { path: 'tab2', component: Tab2 }
+      ]
+    }
+  ]
+})
+```
+
+**默认子路由：**若某个路由规则的 path 值为空字符串，则该条路由规则叫做“默认子路由”
+
+### 动态路由匹配
+
+> 把 Hash 地址中可变的部分定义为参数项，从而提高路由规则的复用性。
+
+### 导航
+
+点击链接实现导航的方式，叫做声明式导航；调用 API 方法实现导航的方式，叫做编程式导航。
+
+`this.$router.push('hash')`
+
+- 跳转到指定的 hash 地址，并增加一条历史记录
+
+`this.$router.replace('hash')`
+
+- 跳转到指定的 hash 地址，并替换当前的历史记录 
+
+`this.$router.go(n)`
+
+- 可以在浏览历史中前进后退
+
+**导航守卫：** 可以控制路由的访问权限。
+
+**全局前置守卫**
+
+每次发生路由的导航跳转时，都会触发全局前置守卫
+
+```js
+const router = new VueRouter({})
+
+router.beforeEach((to, from, next) => {
+  // to 将要访问的路由
+  // from 将要离开的路由 
+  // next 函数，调用 next() 表示放行，允许这次路由导航
+})
+```
+
+![](https://gitee.com/merlinalex/pic-go/raw/master/20220316170726.png)
