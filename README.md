@@ -15,3 +15,5 @@
 [vue.js](vue.js/README.md)
 
 [ES6](ES6/README.md)
+
+[TypeScript](TypeScript/README.md)
