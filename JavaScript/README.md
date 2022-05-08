@@ -874,3 +874,33 @@ console.log(merlin)
 
 ![](https://s2.loli.net/2022/05/03/iERv5yO28CWcVSr.png)
 
+# Asynchronous JavaScript
+
+> Most code is **synchronous**.
+>
+> Synchronous code is executed line by line.
+>
+> Each line of code waits for previous line to finish.
+>
+> Long-running operations block code execution.
+
+![image-20220508221509179](https://i0.hdslb.com/bfs/album/daa6aab5ad9d5109611b5f36cb9504809ca712a3.png)
+
+**Callback function alone is NOT makecode asynchronous**
+
+## AJAX
+
+![image-20220508222206323](https://i0.hdslb.com/bfs/album/8ce8947d5abd961a69e7de40e193b8829521ad51.png)
+
+## API
+
+![image-20220508222350934](https://i0.hdslb.com/bfs/album/6b904c61e582801a4697b878a16ef4a2f8486f8f.png)
+
+There are be many types of APIs in web development:
+
+1. DOM API
+2. Geolocation API
+3. Own Class API
+4. "Online" API
+
+![image-20220508222516776](https://i0.hdslb.com/bfs/album/58920d5de4513729879a8466a7300b2cba6c733d.png)
