@@ -904,3 +904,38 @@ There are be many types of APIs in web development:
 4. "Online" API
 
 ![image-20220508222516776](https://i0.hdslb.com/bfs/album/58920d5de4513729879a8466a7300b2cba6c733d.png)
+
+## XMLHttpRequest
+
+```js
+const request = new XMLHttpRequest()
+request.open('GET', '[url]')
+request.send()
+
+request.addEventListener('load', function () {})
+```
+
+公共API统计：[Public-APIs](https://github.com/public-apis/public-apis)
+
+## Requests and Responses
+
+![image-20220509223144529](https://i0.hdslb.com/bfs/album/ebd36a2ead1db0bef8dd894ddc83bd85ed5e4dcf.png)
+
+![image-20220509223307669](https://i0.hdslb.com/bfs/album/8b033c24e859fe2dc312619b6f2e42e005400898.png)
+
+![image-20220509223407906](https://i0.hdslb.com/bfs/album/3d8f59496c8b47f64fcb831b18feacf1587bee80.png)
+
+![image-20220509225442345](https://i0.hdslb.com/bfs/album/efa22aa63d0770ae1321b2282d5bed058580d4e7.png)
+
+![image-20220509225306368](https://i0.hdslb.com/bfs/album/211c5a76d4bc1283107bf2ffb7ceae5c4a580bbe.png)
+
+**Request:**
+
+![image-20220509225140031](https://i0.hdslb.com/bfs/album/4c2c7b136ca9c7cf4e5afaf3c5544e3063ef2533.png)
+
+**Response:**
+
+![image-20220509225340065](https://i0.hdslb.com/bfs/album/e0b015e59c308feed6be1f2282710e98403431c6.png)
+
+## Callback Hell
+
