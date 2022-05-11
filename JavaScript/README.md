@@ -972,5 +972,3 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data))
 }
 ```
-
-test
