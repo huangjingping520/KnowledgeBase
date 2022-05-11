@@ -972,3 +972,10 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data))
 }
 ```
+
+# Modules
+
+![image-20220511164134405](https://i0.hdslb.com/bfs/album/069f8f867376b39d7b7a5e369b9d0c6fda196fbb.png)
+
+![image-20220511164326301](https://i0.hdslb.com/bfs/album/6a4e6935782397b54cda0d87c6016cfcfa15859e.png)
+
