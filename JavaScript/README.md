@@ -939,3 +939,37 @@ request.addEventListener('load', function () {})
 
 ## Callback Hell
 
+```js
+setTimeout(() => {
+  console.log('1 second passed~~')
+  setTimeout(() => {
+    console.log('2 seconds passed~~')
+    setTimeout(() => {
+      console.log('3 seconds passed~~')
+      setTimeout(() => {
+        console.log('4 seconds passed~~')
+      }, 1000)
+    }, 1000)
+  }, 1000)
+}, 1000)
+```
+
+## Promise and the fetch API
+
+```js
+const request = fetch('https://restcountries.com/v2/name/China')
+console.log(request)
+```
+
+![image-20220510154013415](https://i0.hdslb.com/bfs/album/bf3d26c651369b4d85edb5858298d0a2bef5a976.png)
+
+**Promise:** Acontainer for a future value.
+
+```js
+const getCountryData = function (country) {
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(res => res.json())
+    .then(data => renderCountry(data))
+}
+```
+
